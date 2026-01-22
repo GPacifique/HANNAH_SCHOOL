@@ -1,0 +1,1046 @@
+<!doctype html>
+<html lang="en" class="h-full">
+ <head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Hannah School - Nurturing Young Minds</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script src="/_sdk/element_sdk.js"></script>
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700;800;900&amp;family=Quicksand:wght@400;500;600;700&amp;display=swap" rel="stylesheet">
+  <style>
+    body {
+      box-sizing: border-box;
+    }
+    .font-poppins { font-family: 'Poppins', sans-serif; }
+    .font-quicksand { font-family: 'Quicksand', sans-serif; }
+    
+    @keyframes float {
+      0%, 100% { transform: translateY(0px) rotate(0deg); }
+      50% { transform: translateY(-20px) rotate(5deg); }
+    }
+    
+    @keyframes bounce-slow {
+      0%, 100% { transform: translateY(0); }
+      50% { transform: translateY(-15px); }
+    }
+    
+    @keyframes spin-slow {
+      from { transform: rotate(0deg); }
+      to { transform: rotate(360deg); }
+    }
+    
+    @keyframes pulse-glow {
+      0%, 100% { box-shadow: 0 0 30px rgba(255, 107, 107, 0.6), 0 0 60px rgba(78, 205, 196, 0.4); }
+      50% { box-shadow: 0 0 50px rgba(255, 107, 107, 0.8), 0 0 80px rgba(78, 205, 196, 0.6); }
+    }
+    
+    @keyframes slide-in-left {
+      from { transform: translateX(-100%); opacity: 0; }
+      to { transform: translateX(0); opacity: 1; }
+    }
+    
+    @keyframes slide-in-right {
+      from { transform: translateX(100%); opacity: 0; }
+      to { transform: translateX(0); opacity: 1; }
+    }
+    
+    @keyframes fade-in-up {
+      from { transform: translateY(30px); opacity: 0; }
+      to { transform: translateY(0); opacity: 1; }
+    }
+    
+    @keyframes rainbow-border {
+      0% { border-color: #ff6b6b; }
+      25% { border-color: #4ecdc4; }
+      50% { border-color: #ffe66d; }
+      75% { border-color: #a8e6cf; }
+      100% { border-color: #ff6b6b; }
+    }
+    
+    @keyframes gradient-shift {
+      0% { background-position: 0% 50%; }
+      50% { background-position: 100% 50%; }
+      100% { background-position: 0% 50%; }
+    }
+    
+    @keyframes slideshow {
+      0%, 100% { opacity: 0; transform: scale(0.95); }
+      10%, 30% { opacity: 1; transform: scale(1); }
+      40% { opacity: 0; transform: scale(0.95); }
+    }
+    
+    .float-animation { animation: float 4s ease-in-out infinite; }
+    .bounce-animation { animation: bounce-slow 2s ease-in-out infinite; }
+    .spin-animation { animation: spin-slow 20s linear infinite; }
+    .pulse-glow { animation: pulse-glow 3s ease-in-out infinite; }
+    .slide-in-left { animation: slide-in-left 0.8s ease-out; }
+    .slide-in-right { animation: slide-in-right 0.8s ease-out; }
+    .fade-in-up { animation: fade-in-up 0.6s ease-out; }
+    .rainbow-border { animation: rainbow-border 4s linear infinite; }
+    
+    .gradient-hero {
+      background: linear-gradient(-45deg, #667eea 0%, #764ba2 25%, #f093fb 50%, #4facfe 75%, #00f2fe 100%);
+      background-size: 400% 400%;
+      animation: gradient-shift 15s ease infinite;
+    }
+    
+    .gradient-accent {
+      background: linear-gradient(135deg, #f093fb 0%, #f5576c 100%);
+    }
+    
+    .gradient-success {
+      background: linear-gradient(135deg, #4facfe 0%, #00f2fe 100%);
+    }
+    
+    .gradient-warning {
+      background: linear-gradient(135deg, #fa709a 0%, #fee140 100%);
+    }
+    
+    .gradient-purple {
+      background: linear-gradient(135deg, #a8edea 0%, #fed6e3 100%);
+    }
+    
+    .gradient-orange {
+      background: linear-gradient(135deg, #ff9a56 0%, #ffeaa7 100%);
+    }
+    
+    .gradient-green {
+      background: linear-gradient(135deg, #81fbb8 0%, #28c76f 100%);
+    }
+    
+    .gradient-blue {
+      background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+    }
+    
+    .gradient-pink {
+      background: linear-gradient(135deg, #ff6b9d 0%, #c06c84 100%);
+    }
+    
+    .program-card {
+      transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+      border: 3px solid transparent;
+    }
+    
+    .program-card:hover {
+      transform: translateY(-15px) scale(1.05);
+      box-shadow: 0 30px 60px rgba(0,0,0,0.3);
+      border-color: currentColor;
+    }
+    
+    .activity-card {
+      transition: all 0.3s ease;
+      position: relative;
+      overflow: hidden;
+    }
+    
+    .activity-card::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: -100%;
+      width: 100%;
+      height: 100%;
+      background: linear-gradient(90deg, transparent, rgba(255,255,255,0.3), transparent);
+      transition: left 0.5s;
+    }
+    
+    .activity-card:hover::before {
+      left: 100%;
+    }
+    
+    .activity-card:hover {
+      transform: scale(1.08) rotate(2deg);
+    }
+    
+    .nav-link {
+      position: relative;
+      overflow: hidden;
+    }
+    
+    .nav-link::before {
+      content: '';
+      position: absolute;
+      bottom: 0;
+      left: 50%;
+      width: 0;
+      height: 3px;
+      background: linear-gradient(90deg, #f093fb, #f5576c);
+      transition: all 0.3s;
+      transform: translateX(-50%);
+    }
+    
+    .nav-link:hover::before {
+      width: 100%;
+    }
+    
+    .particle {
+      position: absolute;
+      border-radius: 50%;
+      pointer-events: none;
+    }
+    
+    .stat-number {
+      transition: all 0.3s ease;
+    }
+    
+    .stat-card:hover .stat-number {
+      transform: scale(1.2);
+    }
+    
+    .feature-icon {
+      transition: all 0.4s ease;
+    }
+    
+    .feature-box:hover .feature-icon {
+      transform: rotate(360deg) scale(1.2);
+    }
+    
+    html, body {
+      height: 100%;
+      margin: 0;
+    }
+    
+    .app-wrapper {
+      min-height: 100%;
+      width: 100%;
+    }
+    
+    .btn-3d {
+      box-shadow: 0 6px 0 #c44569, 0 8px 20px rgba(0,0,0,0.3);
+      transition: all 0.1s;
+    }
+    
+    .btn-3d:hover {
+      transform: translateY(2px);
+      box-shadow: 0 4px 0 #c44569, 0 6px 15px rgba(0,0,0,0.3);
+    }
+    
+    .btn-3d:active {
+      transform: translateY(6px);
+      box-shadow: 0 0 0 #c44569, 0 2px 10px rgba(0,0,0,0.3);
+    }
+    
+    .text-glow {
+      text-shadow: 0 0 20px rgba(255,255,255,0.8), 0 0 40px rgba(255,255,255,0.6);
+    }
+    
+    .card-shine {
+      position: relative;
+      overflow: hidden;
+    }
+    
+    .card-shine::after {
+      content: '';
+      position: absolute;
+      top: -50%;
+      right: -50%;
+      bottom: -50%;
+      left: -50%;
+      background: linear-gradient(to bottom, transparent, rgba(255,255,255,0.1) 50%, transparent);
+      transform: rotateZ(60deg) translate(-5em, 7.5em);
+      animation: shine 8s infinite;
+    }
+    
+    @keyframes shine {
+      0% { transform: rotateZ(60deg) translate(-5em, 7.5em); }
+      100% { transform: rotateZ(60deg) translate(30em, -30em); }
+    }
+    
+    .slider-container {
+      position: relative;
+      overflow: hidden;
+    }
+    
+    .slider-track {
+      display: flex;
+      animation: autoSlide 25s linear infinite;
+    }
+    
+    @keyframes autoSlide {
+      0% { transform: translateX(0); }
+      100% { transform: translateX(-50%); }
+    }
+    
+    .slider-track:hover {
+      animation-play-state: paused;
+    }
+    
+    .slide-item {
+      flex-shrink: 0;
+      transition: transform 0.3s ease;
+    }
+    
+    .slide-item:hover {
+      transform: scale(1.05);
+      z-index: 10;
+    }
+  </style>
+  <style>@view-transition { navigation: auto; }</style>
+  <script src="/_sdk/data_sdk.js" type="text/javascript"></script>
+ </head>
+ <body class="h-full font-quicksand">
+  <div class="app-wrapper bg-gradient-to-br from-purple-50 via-pink-50 to-blue-50 overflow-auto"><!-- Navigation -->
+   <nav id="navbar" class="fixed top-0 left-0 right-0 z-50 bg-white/95 backdrop-blur-md shadow-2xl border-b-4 border-pink-400">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+     <div class="flex justify-between items-center h-20"><!-- Logo -->
+      <div class="flex items-center gap-3 slide-in-left">
+       <div class="w-16 h-16 rounded-2xl flex items-center justify-center gradient-accent pulse-glow shadow-2xl">
+        <svg class="w-9 h-9 text-white" fill="currentColor" viewbox="0 0 24 24"><path d="M12 3L1 9l4 2.18v6L12 21l7-3.82v-6l2-1.09V17h2V9L12 3zm6.82 6L12 12.72 5.18 9 12 5.28 18.82 9zM17 15.99l-5 2.73-5-2.73v-3.72L12 15l5-2.73v3.72z" />
+        </svg>
+       </div>
+       <div>
+        <h1 id="nav-school-name" class="font-poppins font-black text-2xl bg-gradient-to-r from-purple-600 to-pink-600 bg-clip-text text-transparent">HANNAH SCHOOL</h1>
+        <p class="text-xs text-orange-500 font-bold">✨ Excellence in Education</p>
+       </div>
+      </div><!-- Desktop Nav -->
+      <div class="hidden md:flex items-center gap-6"><a href="#home" class="nav-link text-gray-700 font-bold text-lg hover:text-pink-600 transition-colors px-2 py-1">Home</a> <a href="#programs" class="nav-link text-gray-700 font-bold text-lg hover:text-pink-600 transition-colors px-2 py-1">Programs</a> <a href="#activities" class="nav-link text-gray-700 font-bold text-lg hover:text-pink-600 transition-colors px-2 py-1">Activities</a> <a href="#gallery" class="nav-link text-gray-700 font-bold text-lg hover:text-pink-600 transition-colors px-2 py-1">Gallery</a> <a href="#about" class="nav-link text-gray-700 font-bold text-lg hover:text-pink-600 transition-colors px-2 py-1">About</a> <a href="#contact" class="nav-link text-gray-700 font-bold text-lg hover:text-pink-600 transition-colors px-2 py-1">Contact</a> <a href="#contact" id="cta-button" class="px-8 py-3 btn-3d gradient-accent text-white font-black text-lg rounded-full hover:opacity-90 transition-all">Enroll Now 🚀</a>
+      </div><!-- Mobile Menu Button --> <button id="mobile-menu-btn" class="md:hidden p-3 rounded-xl hover:bg-pink-100 transition-colors">
+       <svg class="w-7 h-7 text-purple-600" fill="none" stroke="currentColor" viewbox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="3" d="M4 6h16M4 12h16M4 18h16" />
+       </svg></button>
+     </div><!-- Mobile Menu -->
+     <div id="mobile-menu" class="hidden md:hidden pb-4">
+      <div class="flex flex-col gap-3"><a href="#home" class="px-4 py-3 text-gray-700 font-bold hover:bg-pink-100 rounded-xl transition-colors">Home</a> <a href="#programs" class="px-4 py-3 text-gray-700 font-bold hover:bg-pink-100 rounded-xl transition-colors">Programs</a> <a href="#activities" class="px-4 py-3 text-gray-700 font-bold hover:bg-pink-100 rounded-xl transition-colors">Activities</a> <a href="#gallery" class="px-4 py-3 text-gray-700 font-bold hover:bg-pink-100 rounded-xl transition-colors">Gallery</a> <a href="#about" class="px-4 py-3 text-gray-700 font-bold hover:bg-pink-100 rounded-xl transition-colors">About</a> <a href="#contact" class="px-4 py-3 text-gray-700 font-bold hover:bg-pink-100 rounded-xl transition-colors">Contact</a> <a href="#contact" class="mx-4 px-6 py-3 gradient-accent text-white font-black rounded-xl text-center shadow-xl">Enroll Now</a>
+      </div>
+     </div>
+    </div>
+   </nav><!-- Hero Section -->
+   <section id="home" class="gradient-hero relative overflow-hidden pt-20"><!-- Animated Particles -->
+    <div id="particles-container" class="absolute inset-0 overflow-hidden pointer-events-none"></div>
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-24 lg:py-36 relative z-10">
+     <div class="grid lg:grid-cols-2 gap-16 items-center">
+      <div class="text-center lg:text-left fade-in-up">
+       <div class="inline-flex items-center gap-2 px-5 py-3 bg-white/20 backdrop-blur-sm rounded-full mb-8 border-2 border-white/40 bounce-animation"><span class="text-3xl">🌟</span> <span class="text-white font-bold text-lg">Welcome to Excellence</span>
+       </div>
+       <h1 id="hero-title" class="font-poppins text-5xl sm:text-6xl lg:text-7xl font-black text-white mb-6 leading-tight text-glow">HANNAH SCHOOL</h1>
+       <p id="hero-tagline" class="text-2xl sm:text-3xl text-white/95 mb-10 leading-relaxed font-semibold">Where Every Child's Potential Blossoms Into Excellence</p>
+       <div class="flex flex-col sm:flex-row gap-5 justify-center lg:justify-start"><a href="#contact" class="px-10 py-5 gradient-warning text-white font-black rounded-2xl text-xl hover:scale-110 transition-transform shadow-2xl inline-flex items-center justify-center gap-3 btn-3d"> <span>Start Your Journey</span> <span class="text-2xl">🎓</span> </a> <a href="#programs" class="px-10 py-5 bg-white text-purple-700 font-black rounded-2xl text-xl hover:scale-110 transition-transform shadow-2xl inline-flex items-center justify-center border-4 border-white"> Explore Programs </a>
+       </div>
+      </div><!-- Hero Illustration -->
+      <div class="relative flex justify-center slide-in-right">
+       <div class="relative"><!-- Spinning Ring -->
+        <div class="absolute inset-0 w-80 h-80 sm:w-96 sm:h-96 rounded-full border-8 border-dashed border-white/30 spin-animation"></div><!-- Main Circle -->
+        <div class="w-80 h-80 sm:w-96 sm:h-96 rounded-full gradient-orange flex items-center justify-center shadow-2xl float-animation pulse-glow card-shine">
+         <div class="text-center p-8">
+          <div class="text-8xl sm:text-9xl mb-4 bounce-animation">
+           📚
+          </div>
+          <p class="text-white font-poppins font-black text-2xl sm:text-3xl text-glow">Learning is Fun!</p>
+         </div>
+        </div><!-- Floating Icons with different animations -->
+        <div class="absolute -top-6 -left-6 w-20 h-20 gradient-pink rounded-3xl shadow-2xl flex items-center justify-center float-animation border-4 border-white" style="animation-delay: 0s;"><span class="text-4xl">🎨</span>
+        </div>
+        <div class="absolute top-1/4 -right-10 w-24 h-24 gradient-blue rounded-3xl shadow-2xl flex items-center justify-center bounce-animation border-4 border-white" style="animation-delay: 0.5s;"><span class="text-5xl">🎹</span>
+        </div>
+        <div class="absolute -bottom-6 left-1/4 w-20 h-20 gradient-success rounded-3xl shadow-2xl flex items-center justify-center float-animation border-4 border-white" style="animation-delay: 1s;"><span class="text-4xl">🏊</span>
+        </div>
+        <div class="absolute bottom-1/3 -left-10 w-24 h-24 gradient-green rounded-3xl shadow-2xl flex items-center justify-center bounce-animation border-4 border-white" style="animation-delay: 1.5s;"><span class="text-5xl">♟️</span>
+        </div>
+       </div>
+      </div>
+     </div>
+    </div><!-- Wave Divider -->
+    <div class="absolute bottom-0 left-0 right-0">
+     <svg viewbox="0 0 1440 120" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M0 120L60 105C120 90 240 60 360 45C480 30 600 30 720 37.5C840 45 960 60 1080 67.5C1200 75 1320 75 1380 75L1440 75V120H1380C1320 120 1200 120 1080 120C960 120 840 120 720 120C600 120 480 120 360 120C240 120 120 120 60 120H0Z" fill="rgb(250, 245, 255)" />
+     </svg>
+    </div>
+   </section><!-- Programs Section -->
+   <section id="programs" class="py-24 bg-gradient-to-br from-purple-50 via-pink-50 to-orange-50">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+     <div class="text-center mb-20">
+      <div class="inline-block px-6 py-3 gradient-purple text-purple-800 rounded-full font-black text-lg mb-6 shadow-xl bounce-animation">
+       📚 OUR PROGRAMS
+      </div>
+      <h2 class="font-poppins text-4xl sm:text-5xl lg:text-6xl font-black bg-gradient-to-r from-purple-600 via-pink-600 to-orange-600 bg-clip-text text-transparent mb-6">Academic Excellence</h2>
+      <p class="text-gray-700 text-xl max-w-3xl mx-auto font-semibold">Comprehensive educational programs designed to nurture every stage of your child's development</p>
+     </div>
+     <div class="grid md:grid-cols-3 gap-10"><!-- Day Care -->
+      <div class="program-card bg-white rounded-3xl p-10 shadow-2xl border-4 border-pink-200 card-shine">
+       <div class="w-24 h-24 rounded-3xl gradient-pink flex items-center justify-center mb-8 shadow-2xl mx-auto bounce-animation"><span class="text-6xl">👶</span>
+       </div>
+       <h3 class="font-poppins text-3xl font-black text-pink-600 mb-4 text-center">Day Care</h3>
+       <p class="text-gray-600 mb-6 text-lg font-semibold text-center">Safe, loving environment for our youngest learners with dedicated caregivers</p>
+       <ul class="space-y-3">
+        <li class="flex items-center gap-3 text-gray-700 font-semibold text-lg"><span class="text-3xl">✅</span> <span>Ages 6 months - 3 years</span></li>
+        <li class="flex items-center gap-3 text-gray-700 font-semibold text-lg"><span class="text-3xl">✅</span> <span>Nutritious meals provided</span></li>
+        <li class="flex items-center gap-3 text-gray-700 font-semibold text-lg"><span class="text-3xl">✅</span> <span>Safe play areas</span></li>
+       </ul>
+      </div><!-- Kindergarten -->
+      <div class="program-card bg-white rounded-3xl p-10 shadow-2xl border-4 border-purple-200 card-shine">
+       <div class="w-24 h-24 rounded-3xl gradient-purple flex items-center justify-center mb-8 shadow-2xl mx-auto bounce-animation" style="animation-delay: 0.2s;"><span class="text-6xl">🎨</span>
+       </div>
+       <h3 class="font-poppins text-3xl font-black text-purple-600 mb-4 text-center">Kindergarten</h3>
+       <p class="text-gray-600 mb-6 text-lg font-semibold text-center">Building strong foundations through play-based learning and creativity</p>
+       <ul class="space-y-3">
+        <li class="flex items-center gap-3 text-gray-700 font-semibold text-lg"><span class="text-3xl">✅</span> <span>Ages 3 - 6 years</span></li>
+        <li class="flex items-center gap-3 text-gray-700 font-semibold text-lg"><span class="text-3xl">✅</span> <span>Early literacy &amp; numeracy</span></li>
+        <li class="flex items-center gap-3 text-gray-700 font-semibold text-lg"><span class="text-3xl">✅</span> <span>Social skills development</span></li>
+       </ul>
+      </div><!-- Lower Primary -->
+      <div class="program-card bg-white rounded-3xl p-10 shadow-2xl border-4 border-blue-200 card-shine">
+       <div class="w-24 h-24 rounded-3xl gradient-blue flex items-center justify-center mb-8 shadow-2xl mx-auto bounce-animation" style="animation-delay: 0.4s;"><span class="text-6xl">📖</span>
+       </div>
+       <h3 class="font-poppins text-3xl font-black text-blue-600 mb-4 text-center">Lower Primary</h3>
+       <p class="text-gray-600 mb-6 text-lg font-semibold text-center">Comprehensive curriculum fostering academic excellence and critical thinking</p>
+       <ul class="space-y-3">
+        <li class="flex items-center gap-3 text-gray-700 font-semibold text-lg"><span class="text-3xl">✅</span> <span>P1 - P4 classes</span></li>
+        <li class="flex items-center gap-3 text-gray-700 font-semibold text-lg"><span class="text-3xl">✅</span> <span>National curriculum</span></li>
+        <li class="flex items-center gap-3 text-gray-700 font-semibold text-lg"><span class="text-3xl">✅</span> <span>Qualified teachers</span></li>
+       </ul>
+      </div>
+     </div>
+    </div>
+   </section><!-- Extra Activities Section -->
+   <section id="activities" class="py-24 bg-gradient-to-br from-blue-50 via-teal-50 to-green-50">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+     <div class="text-center mb-20">
+      <div class="inline-block px-6 py-3 gradient-success text-blue-800 rounded-full font-black text-lg mb-6 shadow-xl bounce-animation">
+       🎯 BEYOND ACADEMICS
+      </div>
+      <h2 class="font-poppins text-4xl sm:text-5xl lg:text-6xl font-black bg-gradient-to-r from-blue-600 via-teal-600 to-green-600 bg-clip-text text-transparent mb-6">Extra-Curricular Activities</h2>
+      <p class="text-gray-700 text-xl max-w-3xl mx-auto font-semibold">Developing well-rounded individuals through diverse skill-building programs</p>
+     </div>
+     <div class="grid sm:grid-cols-2 lg:grid-cols-3 gap-10"><!-- Piano Lessons -->
+      <div class="activity-card relative overflow-hidden rounded-3xl gradient-blue p-10 text-white shadow-2xl border-4 border-indigo-300">
+       <div class="absolute top-0 right-0 w-40 h-40 bg-white/10 rounded-full blur-3xl"></div>
+       <div class="relative">
+        <div class="text-8xl mb-8 bounce-animation">
+         🎹
+        </div>
+        <h3 class="font-poppins text-3xl font-black mb-4">Piano Lessons</h3>
+        <p class="text-blue-100 mb-6 text-lg font-semibold">Professional piano instruction for all skill levels, from beginners to advanced students</p>
+        <div class="inline-flex items-center gap-2 px-5 py-2 bg-white/20 rounded-full font-bold"><span>Learn more</span> <span class="text-xl">→</span>
+        </div>
+       </div>
+      </div><!-- Swimming Lessons -->
+      <div class="activity-card relative overflow-hidden rounded-3xl gradient-success p-10 text-white shadow-2xl border-4 border-cyan-300">
+       <div class="absolute top-0 right-0 w-40 h-40 bg-white/10 rounded-full blur-3xl"></div>
+       <div class="relative">
+        <div class="text-8xl mb-8 bounce-animation" style="animation-delay: 0.2s;">
+         🏊
+        </div>
+        <h3 class="font-poppins text-3xl font-black mb-4">Swimming Lessons</h3>
+        <p class="text-cyan-100 mb-6 text-lg font-semibold">Water safety and swimming skills taught by certified instructors in safe environment</p>
+        <div class="inline-flex items-center gap-2 px-5 py-2 bg-white/20 rounded-full font-bold"><span>Learn more</span> <span class="text-xl">→</span>
+        </div>
+       </div>
+      </div><!-- Chess Lessons -->
+      <div class="activity-card relative overflow-hidden rounded-3xl gradient-green p-10 text-white shadow-2xl border-4 border-emerald-300 sm:col-span-2 lg:col-span-1">
+       <div class="absolute top-0 right-0 w-40 h-40 bg-white/10 rounded-full blur-3xl"></div>
+       <div class="relative">
+        <div class="text-8xl mb-8 bounce-animation" style="animation-delay: 0.4s;">
+         ♟️
+        </div>
+        <h3 class="font-poppins text-3xl font-black mb-4">Chess Lessons</h3>
+        <p class="text-emerald-100 mb-6 text-lg font-semibold">Strategic thinking and problem-solving through the timeless game of chess</p>
+        <div class="inline-flex items-center gap-2 px-5 py-2 bg-white/20 rounded-full font-bold"><span>Learn more</span> <span class="text-xl">→</span>
+        </div>
+       </div>
+      </div>
+     </div>
+    </div>
+   </section><!-- Student Gallery Section -->
+   <section id="gallery" class="py-24 bg-gradient-to-br from-pink-50 via-orange-50 to-yellow-50 overflow-hidden">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 mb-16">
+     <div class="text-center">
+      <div class="inline-block px-6 py-3 gradient-warning text-orange-800 rounded-full font-black text-lg mb-6 shadow-xl bounce-animation">
+       🎨 STUDENT LIFE
+      </div>
+      <h2 id="gallery-title" class="font-poppins text-4xl sm:text-5xl lg:text-6xl font-black bg-gradient-to-r from-pink-600 via-orange-600 to-yellow-600 bg-clip-text text-transparent mb-6">Our Happy Students</h2>
+      <p class="text-gray-700 text-xl max-w-3xl mx-auto font-semibold">Capturing the joy and enthusiasm of learning at Hannah School</p>
+     </div>
+    </div>
+    <div class="slider-container">
+     <div class="slider-track" id="slider-track"><!-- Student Illustration 1 - Reading -->
+      <div class="slide-item px-4">
+        <div class="w-80 h-96 rounded-3xl bg-white p-8 shadow-2xl border-4 border-pink-300 flex flex-col items-center justify-center">
+          <img src="https://images.unsplash.com/photo-1519125323398-675f0ddb6308?auto=format&fit=crop&w=400&q=80" alt="Reading Time" class="w-48 h-48 mb-4 object-cover rounded-2xl" />
+          <div class="text-center">
+            <h3 class="font-poppins text-2xl font-black text-pink-600 mb-2">Reading Time 📚</h3>
+            <p class="text-gray-700 font-semibold">Exploring new worlds through books</p>
+          </div>
+        </div>
+      </div>
+      <div class="slide-item px-4">
+        <div class="w-80 h-96 rounded-3xl bg-white p-8 shadow-2xl border-4 border-purple-300 flex flex-col items-center justify-center">
+          <img src="https://images.unsplash.com/photo-1464983953574-0892a716854b?auto=format&fit=crop&w=400&q=80" alt="Creative Arts" class="w-48 h-48 mb-4 object-cover rounded-2xl" />
+          <div class="text-center">
+            <h3 class="font-poppins text-2xl font-black text-purple-600 mb-2">Creative Arts 🎨</h3>
+            <p class="text-gray-700 font-semibold">Expressing creativity through art</p>
+          </div>
+        </div>
+      </div>
+      <div class="slide-item px-4">
+        <div class="w-80 h-96 rounded-3xl bg-white p-8 shadow-2xl border-4 border-blue-300 flex flex-col items-center justify-center">
+          <img src="https://images.unsplash.com/photo-1517841905240-472988babdf9?auto=format&fit=crop&w=400&q=80" alt="Music Class" class="w-48 h-48 mb-4 object-cover rounded-2xl" />
+          <div class="text-center">
+            <h3 class="font-poppins text-2xl font-black text-blue-600 mb-2">Music Class 🎵</h3>
+            <p class="text-gray-700 font-semibold">Learning rhythm and melody</p>
+          </div>
+        </div>
+      </div>
+      <div class="slide-item px-4">
+        <div class="w-80 h-96 rounded-3xl bg-white p-8 shadow-2xl border-4 border-cyan-300 flex flex-col items-center justify-center">
+          <img src="https://images.unsplash.com/photo-1503676382389-4809596d5290?auto=format&fit=crop&w=400&q=80" alt="Sports Day" class="w-48 h-48 mb-4 object-cover rounded-2xl" />
+          <div class="text-center">
+            <h3 class="font-poppins text-2xl font-black text-cyan-600 mb-2">Sports Day ⚽</h3>
+            <p class="text-gray-700 font-semibold">Building teamwork and fitness</p>
+          </div>
+        </div>
+      </div>
+      <div class="slide-item px-4">
+        <div class="w-80 h-96 rounded-3xl bg-white p-8 shadow-2xl border-4 border-green-300 flex flex-col items-center justify-center">
+          <img src="https://images.unsplash.com/photo-1465101046530-73398c7f28ca?auto=format&fit=crop&w=400&q=80" alt="Science Lab" class="w-48 h-48 mb-4 object-cover rounded-2xl" />
+          <div class="text-center">
+            <h3 class="font-poppins text-2xl font-black text-green-600 mb-2">Science Lab 🔬</h3>
+            <p class="text-gray-700 font-semibold">Discovering through experiments</p>
+          </div>
+        </div>
+      </div>
+      <div class="slide-item px-4">
+        <div class="w-80 h-96 rounded-3xl bg-white p-8 shadow-2xl border-4 border-orange-300 flex flex-col items-center justify-center">
+          <img src="https://images.unsplash.com/photo-1502086223501-7ea6ecd79368?auto=format&fit=crop&w=400&q=80" alt="Playtime Fun" class="w-48 h-48 mb-4 object-cover rounded-2xl" />
+          <div class="text-center">
+            <h3 class="font-poppins text-2xl font-black text-orange-600 mb-2">Playtime Fun 🎪</h3>
+            <p class="text-gray-700 font-semibold">Making friends and having fun</p>
+          </div>
+        </div>
+      </div>
+      <div class="slide-item px-4">
+       <div class="w-80 h-96 rounded-3xl gradient-pink p-8 shadow-2xl border-4 border-pink-300 flex flex-col items-center justify-center">
+        <svg class="w-48 h-48 mb-4" viewbox="0 0 200 200" fill="none"><circle cx="100" cy="60" r="35" fill="#FFE5B4" /> <path d="M100 95 Q80 110 75 140 L125 140 Q120 110 100 95 Z" fill="#FF6B9D" /> <rect x="70" y="140" width="60" height="50" rx="5" fill="#4A5568" /> <rect x="60" y="95" width="80" height="45" rx="8" fill="#FFA500" /> <ellipse cx="85" cy="55" rx="5" ry="8" fill="#2D3748" /> <ellipse cx="115" cy="55" rx="5" ry="8" fill="#2D3748" /> <path d="M90 70 Q100 75 110 70" stroke="#2D3748" stroke-width="3" stroke-linecap="round" fill="none" />
+        </svg>
+        <div class="text-center">
+         <h3 class="font-poppins text-2xl font-black text-white mb-2">Reading Time 📚</h3>
+         <p class="text-white/90 font-semibold">Exploring new worlds through books</p>
+        </div>
+       </div>
+      </div>
+      <div class="slide-item px-4">
+       <div class="w-80 h-96 rounded-3xl gradient-purple p-8 shadow-2xl border-4 border-purple-300 flex flex-col items-center justify-center">
+        <svg class="w-48 h-48 mb-4" viewbox="0 0 200 200" fill="none"><circle cx="100" cy="60" r="35" fill="#F5DEB3" /> <path d="M100 95 Q80 110 75 140 L125 140 Q120 110 100 95 Z" fill="#A8EDEA" /> <rect x="70" y="140" width="60" height="50" rx="5" fill="#667EEA" /> <ellipse cx="85" cy="55" rx="5" ry="8" fill="#2D3748" /> <ellipse cx="115" cy="55" rx="5" ry="8" fill="#2D3748" /> <circle cx="100" cy="70" r="8" fill="#FF6B9D" /> <rect x="50" y="100" width="15" height="60" rx="3" fill="#FF9A56" transform="rotate(-30 57 130)" />
+        </svg>
+        <div class="text-center">
+         <h3 class="font-poppins text-2xl font-black text-white mb-2">Creative Arts 🎨</h3>
+         <p class="text-white/90 font-semibold">Expressing creativity through art</p>
+        </div>
+       </div>
+      </div>
+      <div class="slide-item px-4">
+       <div class="w-80 h-96 rounded-3xl gradient-blue p-8 shadow-2xl border-4 border-blue-300 flex flex-col items-center justify-center">
+        <svg class="w-48 h-48 mb-4" viewbox="0 0 200 200" fill="none"><circle cx="100" cy="60" r="35" fill="#FFDAB9" /> <path d="M100 95 Q80 110 75 140 L125 140 Q120 110 100 95 Z" fill="#4FACFE" /> <rect x="70" y="140" width="60" height="50" rx="5" fill="#2C5282" /> <ellipse cx="85" cy="55" rx="5" ry="8" fill="#2D3748" /> <ellipse cx="115" cy="55" rx="5" ry="8" fill="#2D3748" /> <path d="M95 68 Q100 70 105 68" stroke="#2D3748" stroke-width="3" stroke-linecap="round" fill="none" /> <circle cx="160" cy="100" r="12" fill="#FFD700" /> <circle cx="160" cy="120" r="12" fill="#FFD700" /> <line x1="165" y1="95" x2="165" y2="80" stroke="#2D3748" stroke-width="3" />
+        </svg>
+        <div class="text-center">
+         <h3 class="font-poppins text-2xl font-black text-white mb-2">Music Class 🎵</h3>
+         <p class="text-white/90 font-semibold">Learning rhythm and melody</p>
+        </div>
+       </div>
+      </div>
+      <div class="slide-item px-4">
+       <div class="w-80 h-96 rounded-3xl gradient-success p-8 shadow-2xl border-4 border-cyan-300 flex flex-col items-center justify-center">
+        <svg class="w-48 h-48 mb-4" viewbox="0 0 200 200" fill="none"><circle cx="100" cy="60" r="35" fill="#FFE4C4" /> <path d="M100 95 Q85 105 80 130 L120 130 Q115 105 100 95 Z" fill="#00F2FE" /> <rect x="75" y="130" width="20" height="55" rx="4" fill="#0E7490" /> <rect x="105" y="130" width="20" height="55" rx="4" fill="#0E7490" /> <ellipse cx="85" cy="55" rx="5" ry="8" fill="#2D3748" /> <ellipse cx="115" cy="55" rx="5" ry="8" fill="#2D3748" /> <path d="M90 68 Q100 72 110 68" stroke="#2D3748" stroke-width="3" stroke-linecap="round" fill="none" /> <circle cx="140" cy="120" r="15" fill="#FFFFFF" stroke="#000" stroke-width="2" />
+        </svg>
+        <div class="text-center">
+         <h3 class="font-poppins text-2xl font-black text-white mb-2">Sports Day ⚽</h3>
+         <p class="text-white/90 font-semibold">Building teamwork and fitness</p>
+        </div>
+       </div>
+      </div>
+      <div class="slide-item px-4">
+       <div class="w-80 h-96 rounded-3xl gradient-green p-8 shadow-2xl border-4 border-green-300 flex flex-col items-center justify-center">
+        <svg class="w-48 h-48 mb-4" viewbox="0 0 200 200" fill="none"><circle cx="100" cy="60" r="35" fill="#FFDEAD" /> <path d="M100 95 Q80 110 75 140 L125 140 Q120 110 100 95 Z" fill="#81FBB8" /> <rect x="70" y="140" width="60" height="50" rx="5" fill="#059669" /> <ellipse cx="85" cy="55" rx="5" ry="8" fill="#2D3748" /> <ellipse cx="115" cy="55" rx="5" ry="8" fill="#2D3748" /> <circle cx="100" cy="70" r="6" fill="#FF6B9D" /> <path d="M150 110 L150 130 Q150 135 155 140 L145 140 Q150 135 150 130 Z" fill="#A0AEC0" stroke="#2D3748" stroke-width="2" /> <circle cx="150" cy="105" r="8" fill="#60A5FA" />
+        </svg>
+        <div class="text-center">
+         <h3 class="font-poppins text-2xl font-black text-white mb-2">Science Lab 🔬</h3>
+         <p class="text-white/90 font-semibold">Discovering through experiments</p>
+        </div>
+       </div>
+      </div>
+      <div class="slide-item px-4">
+       <div class="w-80 h-96 rounded-3xl gradient-orange p-8 shadow-2xl border-4 border-orange-300 flex flex-col items-center justify-center">
+        <svg class="w-48 h-48 mb-4" viewbox="0 0 200 200" fill="none"><circle cx="100" cy="60" r="35" fill="#FFEBCD" /> <path d="M100 95 Q90 100 85 125 L115 125 Q110 100 100 95 Z" fill="#FFA500" /> <rect x="80" y="125" width="15" height="60" rx="4" fill="#D97706" transform="rotate(-20 87 155)" /> <rect x="105" y="125" width="15" height="60" rx="4" fill="#D97706" transform="rotate(20 112 155)" /> <ellipse cx="85" cy="55" rx="5" ry="8" fill="#2D3748" /> <ellipse cx="115" cy="55" rx="5" ry="8" fill="#2D3748" /> <path d="M85 68 Q100 75 115 68" stroke="#2D3748" stroke-width="3" stroke-linecap="round" fill="none" /> <path d="M65 100 Q60 95 55 100" stroke="#FFA500" stroke-width="4" stroke-linecap="round" fill="none" /> <path d="M145 100 Q140 95 135 100" stroke="#FFA500" stroke-width="4" stroke-linecap="round" fill="none" />
+        </svg>
+        <div class="text-center">
+         <h3 class="font-poppins text-2xl font-black text-white mb-2">Playtime Fun 🎪</h3>
+         <p class="text-white/90 font-semibold">Making friends and having fun</p>
+        </div>
+       </div>
+      </div>
+     </div>
+    </div>
+   </section><!-- Stats Section -->
+   <section class="py-20 gradient-accent relative overflow-hidden">
+    <div class="absolute inset-0 opacity-10">
+     <div class="absolute top-10 left-10 w-32 h-32 bg-white rounded-full blur-2xl spin-animation"></div>
+     <div class="absolute bottom-10 right-10 w-40 h-40 bg-white rounded-full blur-2xl spin-animation" style="animation-delay: 2s;"></div>
+    </div>
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
+     <div class="grid grid-cols-2 lg:grid-cols-4 gap-10 text-center">
+      <div class="stat-card">
+       <div class="stat-number text-5xl sm:text-7xl font-poppins font-black text-white mb-3 text-glow">
+        500+
+       </div>
+       <p class="text-white/95 font-bold text-xl">Happy Students</p>
+      </div>
+      <div class="stat-card">
+       <div class="stat-number text-5xl sm:text-7xl font-poppins font-black text-white mb-3 text-glow">
+        25+
+       </div>
+       <p class="text-white/95 font-bold text-xl">Expert Teachers</p>
+      </div>
+      <div class="stat-card">
+       <div class="stat-number text-5xl sm:text-7xl font-poppins font-black text-white mb-3 text-glow">
+        10+
+       </div>
+       <p class="text-white/95 font-bold text-xl">Years Experience</p>
+      </div>
+      <div class="stat-card">
+       <div class="stat-number text-5xl sm:text-7xl font-poppins font-black text-white mb-3 text-glow">
+        6
+       </div>
+       <p class="text-white/95 font-bold text-xl">Programs Offered</p>
+      </div>
+     </div>
+    </div>
+   </section><!-- About Section -->
+   <section id="about" class="py-24 bg-gradient-to-br from-orange-50 via-yellow-50 to-pink-50">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+     <div class="grid lg:grid-cols-2 gap-16 items-center">
+      <div>
+       <div class="inline-block px-6 py-3 gradient-orange text-orange-800 rounded-full font-black text-lg mb-6 shadow-xl bounce-animation">
+        🌈 ABOUT US
+       </div>
+       <h2 class="font-poppins text-4xl sm:text-5xl lg:text-6xl font-black bg-gradient-to-r from-orange-600 via-pink-600 to-purple-600 bg-clip-text text-transparent mb-8">Why Choose Hannah School?</h2>
+       <p id="about-text" class="text-gray-700 text-xl mb-8 leading-relaxed font-semibold">At Hannah School, we believe every child is unique and deserves an education that nurtures their individual talents. Our dedicated team of educators creates a warm, supportive environment where children thrive academically, socially, and emotionally.</p>
+       <div class="space-y-6">
+        <div class="feature-box flex items-start gap-5 p-5 bg-white rounded-2xl shadow-xl border-3 border-green-200">
+         <div class="feature-icon w-16 h-16 rounded-2xl gradient-green flex items-center justify-center flex-shrink-0"><span class="text-3xl">🛡️</span>
+         </div>
+         <div>
+          <h4 class="font-black text-gray-800 mb-2 text-xl">Safe &amp; Nurturing Environment</h4>
+          <p class="text-gray-600 font-semibold">Secure facilities with caring staff dedicated to your child's wellbeing</p>
+         </div>
+        </div>
+        <div class="feature-box flex items-start gap-5 p-5 bg-white rounded-2xl shadow-xl border-3 border-blue-200">
+         <div class="feature-icon w-16 h-16 rounded-2xl gradient-blue flex items-center justify-center flex-shrink-0"><span class="text-3xl">🎓</span>
+         </div>
+         <div>
+          <h4 class="font-black text-gray-800 mb-2 text-xl">Qualified Educators</h4>
+          <p class="text-gray-600 font-semibold">Experienced teachers passionate about early childhood education</p>
+         </div>
+        </div>
+        <div class="feature-box flex items-start gap-5 p-5 bg-white rounded-2xl shadow-xl border-3 border-purple-200">
+         <div class="feature-icon w-16 h-16 rounded-2xl gradient-purple flex items-center justify-center flex-shrink-0"><span class="text-3xl">💪</span>
+         </div>
+         <div>
+          <h4 class="font-black text-gray-800 mb-2 text-xl">Holistic Development</h4>
+          <p class="text-gray-600 font-semibold">Programs that develop mind, body, and character together</p>
+         </div>
+        </div>
+       </div>
+      </div><!-- Image Grid -->
+      <div class="grid grid-cols-2 gap-6">
+       <div class="space-y-6">
+        <div class="gradient-warning rounded-3xl h-64 flex items-center justify-center text-8xl shadow-2xl card-shine border-4 border-yellow-300 float-animation">
+         📚
+        </div>
+        <div class="gradient-pink rounded-3xl h-48 flex items-center justify-center text-7xl shadow-2xl card-shine border-4 border-pink-300 bounce-animation">
+         🎯
+        </div>
+       </div>
+       <div class="space-y-6 pt-12">
+        <div class="gradient-success rounded-3xl h-48 flex items-center justify-center text-7xl shadow-2xl card-shine border-4 border-cyan-300 bounce-animation" style="animation-delay: 0.2s;">
+         🌟
+        </div>
+        <div class="gradient-green rounded-3xl h-64 flex items-center justify-center text-8xl shadow-2xl card-shine border-4 border-green-300 float-animation" style="animation-delay: 0.4s;">
+         🎨
+        </div>
+       </div>
+      </div>
+     </div>
+    </div>
+   </section><!-- Contact Section -->
+   <section id="contact" class="py-24 bg-gradient-to-br from-purple-50 via-blue-50 to-teal-50">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+     <div class="text-center mb-20">
+      <div class="inline-block px-6 py-3 gradient-success text-green-800 rounded-full font-black text-lg mb-6 shadow-xl bounce-animation">
+       📞 GET IN TOUCH
+      </div>
+      <h2 class="font-poppins text-4xl sm:text-5xl lg:text-6xl font-black bg-gradient-to-r from-purple-600 via-blue-600 to-teal-600 bg-clip-text text-transparent mb-6">Contact Us</h2>
+      <p class="text-gray-700 text-xl max-w-3xl mx-auto font-semibold">We'd love to hear from you! Reach out for enrollment inquiries or to schedule a visit</p>
+     </div>
+     <div class="grid lg:grid-cols-2 gap-12"><!-- Contact Info -->
+      <div class="space-y-8"><!-- Phone -->
+       <div class="flex items-start gap-6 p-8 bg-white rounded-3xl shadow-2xl border-4 border-pink-200 card-shine">
+        <div class="w-20 h-20 rounded-2xl gradient-accent flex items-center justify-center flex-shrink-0 shadow-2xl bounce-animation"><span class="text-5xl">📱</span>
+        </div>
+        <div>
+         <h4 class="font-black text-gray-800 text-2xl mb-3">Phone Numbers</h4>
+         <p id="phone-primary" class="text-gray-700 text-xl font-bold mb-2">+256 750 938 684</p>
+         <p id="phone-secondary" class="text-gray-700 text-xl font-bold">+256 777 888 384</p>
+        </div>
+       </div><!-- Location -->
+       <div class="flex items-start gap-6 p-8 bg-white rounded-3xl shadow-2xl border-4 border-blue-200 card-shine">
+        <div class="w-20 h-20 rounded-2xl gradient-blue flex items-center justify-center flex-shrink-0 shadow-2xl bounce-animation" style="animation-delay: 0.2s;"><span class="text-5xl">📍</span>
+        </div>
+        <div>
+         <h4 class="font-black text-gray-800 text-2xl mb-3">Our Location</h4>
+         <p id="address" class="text-gray-700 leading-relaxed text-lg font-semibold">Kamasuba, Off Stella-Kikajjo Road<br>
+          Behind Former NKB Police Station<br>
+          Kampala, Uganda</p>
+        </div>
+       </div><!-- Hours -->
+       <div class="flex items-start gap-6 p-8 bg-white rounded-3xl shadow-2xl border-4 border-green-200 card-shine">
+        <div class="w-20 h-20 rounded-2xl gradient-green flex items-center justify-center flex-shrink-0 shadow-2xl bounce-animation" style="animation-delay: 0.4s;"><span class="text-5xl">⏰</span>
+        </div>
+        <div>
+         <h4 class="font-black text-gray-800 text-2xl mb-3">School Hours</h4>
+         <p class="text-gray-700 font-semibold text-lg">Monday - Friday: 7:00 AM - 5:00 PM</p>
+         <p class="text-gray-700 font-semibold text-lg">Saturday: 8:00 AM - 12:00 PM</p>
+        </div>
+       </div>
+      </div><!-- Contact Form -->
+      <div class="gradient-blue rounded-3xl p-10 text-white shadow-2xl border-4 border-indigo-300 card-shine">
+       <h3 class="font-poppins text-3xl font-black mb-8 text-glow">Send Us a Message 💌</h3>
+       <form id="contact-form" class="space-y-6">
+        <div><label for="name" class="block text-lg font-bold text-white mb-3">Parent/Guardian Name</label> <input type="text" id="name" name="name" required class="w-full px-6 py-4 rounded-2xl bg-white/20 border-3 border-white/40 text-white placeholder-white/70 focus:outline-none focus:ring-4 focus:ring-pink-400 text-lg font-semibold" placeholder="Your full name">
+        </div>
+        <div><label for="email" class="block text-lg font-bold text-white mb-3">Email Address</label> <input type="email" id="email" name="email" required class="w-full px-6 py-4 rounded-2xl bg-white/20 border-3 border-white/40 text-white placeholder-white/70 focus:outline-none focus:ring-4 focus:ring-pink-400 text-lg font-semibold" placeholder="your@email.com">
+        </div>
+        <div><label for="phone" class="block text-lg font-bold text-white mb-3">Phone Number</label> <input type="tel" id="phone" name="phone" class="w-full px-6 py-4 rounded-2xl bg-white/20 border-3 border-white/40 text-white placeholder-white/70 focus:outline-none focus:ring-4 focus:ring-pink-400 text-lg font-semibold" placeholder="+256...">
+        </div>
+        <div><label for="message" class="block text-lg font-bold text-white mb-3">Message</label> <textarea id="message" name="message" rows="4" required class="w-full px-6 py-4 rounded-2xl bg-white/20 border-3 border-white/40 text-white placeholder-white/70 focus:outline-none focus:ring-4 focus:ring-pink-400 resize-none text-lg font-semibold" placeholder="Tell us about your child and what program you're interested in..."></textarea>
+        </div><button type="submit" class="w-full py-5 gradient-warning text-white font-black rounded-2xl text-xl hover:scale-105 transition-transform shadow-2xl flex items-center justify-center gap-3 btn-3d"> <span>Send Message</span> <span class="text-2xl">🚀</span> </button>
+       </form>
+       <div id="form-success" class="hidden mt-6 p-6 bg-green-500 border-3 border-green-300 rounded-2xl text-white text-center font-bold text-lg shadow-xl">
+        ✅ Thank you! We'll get back to you soon.
+       </div>
+      </div>
+     </div>
+    </div>
+   </section><!-- Footer -->
+   <footer class="gradient-accent py-16">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+     <div class="grid md:grid-cols-3 gap-12 mb-12">
+      <div>
+       <div class="flex items-center gap-4 mb-6">
+        <div class="w-16 h-16 rounded-2xl gradient-blue flex items-center justify-center shadow-2xl pulse-glow">
+         <svg class="w-8 h-8 text-white" fill="currentColor" viewbox="0 0 24 24"><path d="M12 3L1 9l4 2.18v6L12 21l7-3.82v-6l2-1.09V17h2V9L12 3z" />
+         </svg>
+        </div>
+        <div>
+         <h4 id="footer-school-name" class="font-poppins font-black text-2xl text-white text-glow">HANNAH SCHOOL</h4>
+         <p class="text-white/90 font-bold">✨ Excellence in Education</p>
+        </div>
+       </div>
+       <p class="text-white/90 leading-relaxed font-semibold text-lg">Building tomorrow's leaders through quality education, care, and holistic development</p>
+      </div>
+      <div>
+       <h4 class="font-poppins font-black text-2xl text-white mb-6">Quick Links</h4>
+       <ul class="space-y-3">
+        <li><a href="#home" class="text-white/90 hover:text-white transition-colors font-bold text-lg inline-flex items-center gap-2"><span>→</span> Home</a></li>
+        <li><a href="#programs" class="text-white/90 hover:text-white transition-colors font-bold text-lg inline-flex items-center gap-2"><span>→</span> Programs</a></li>
+        <li><a href="#activities" class="text-white/90 hover:text-white transition-colors font-bold text-lg inline-flex items-center gap-2"><span>→</span> Activities</a></li>
+        <li><a href="#gallery" class="text-white/90 hover:text-white transition-colors font-bold text-lg inline-flex items-center gap-2"><span>→</span> Gallery</a></li>
+        <li><a href="#about" class="text-white/90 hover:text-white transition-colors font-bold text-lg inline-flex items-center gap-2"><span>→</span> About Us</a></li>
+        <li><a href="#contact" class="text-white/90 hover:text-white transition-colors font-bold text-lg inline-flex items-center gap-2"><span>→</span> Contact</a></li>
+       </ul>
+      </div>
+      <div>
+       <h4 class="font-poppins font-black text-2xl text-white mb-6">Connect With Us</h4>
+       <div class="flex gap-4"><a href="#" class="w-14 h-14 rounded-2xl bg-white/20 flex items-center justify-center text-white hover:bg-white hover:text-pink-600 transition-all shadow-xl border-2 border-white/40">
+         <svg class="w-7 h-7" fill="currentColor" viewbox="0 0 24 24"><path d="M24 12.073c0-6.627-5.373-12-12-12s-12 5.373-12 12c0 5.99 4.388 10.954 10.125 11.854v-8.385H7.078v-3.47h3.047V9.43c0-3.007 1.792-4.669 4.533-4.669 1.312 0 2.686.235 2.686.235v2.953H15.83c-1.491 0-1.956.925-1.956 1.874v2.25h3.328l-.532 3.47h-2.796v8.385C19.612 23.027 24 18.062 24 12.073z" />
+         </svg></a> <a href="#" class="w-14 h-14 rounded-2xl bg-white/20 flex items-center justify-center text-white hover:bg-white hover:text-pink-600 transition-all shadow-xl border-2 border-white/40">
+         <svg class="w-7 h-7" fill="currentColor" viewbox="0 0 24 24"><path d="M23.953 4.57a10 10 0 01-2.825.775 4.958 4.958 0 002.163-2.723c-.951.555-2.005.959-3.127 1.184a4.92 4.92 0 00-8.384 4.482C7.69 8.095 4.067 6.13 1.64 3.162a4.822 4.822 0 00-.666 2.475c0 1.71.87 3.213 2.188 4.096a4.904 4.904 0 01-2.228-.616v.06a4.923 4.923 0 003.946 4.827 4.996 4.996 0 01-2.212.085 4.936 4.936 0 004.604 3.417 9.867 9.867 0 01-6.102 2.105c-.39 0-.779-.023-1.17-.067a13.995 13.995 0 007.557 2.209c9.053 0 13.998-7.496 13.998-13.985 0-.21 0-.42-.015-.63A9.935 9.935 0 0024 4.59z" />
+         </svg></a> <a href="#" class="w-14 h-14 rounded-2xl bg-white/20 flex items-center justify-center text-white hover:bg-white hover:text-pink-600 transition-all shadow-xl border-2 border-white/40">
+         <svg class="w-7 h-7" fill="currentColor" viewbox="0 0 24 24"><path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zm0-2.163c-3.259 0-3.667.014-4.947.072-4.358.2-6.78 2.618-6.98 6.98-.059 1.281-.073 1.689-.073 4.948 0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98 1.281.058 1.689.072 4.948.072 3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98-1.281-.059-1.69-.073-4.949-.073zm0 5.838c-3.403 0-6.162 2.759-6.162 6.162s2.759 6.163 6.162 6.163 6.162-2.759 6.162-6.163c0-3.403-2.759-6.162-6.162-6.162zm0 10.162c-2.209 0-4-1.79-4-4 0-2.209 1.791-4 4-4s4 1.791 4 4c0 2.21-1.791 4-4 4zm6.406-11.845c-.796 0-1.441.645-1.441 1.44s.645 1.44 1.441 1.44c.795 0 1.439-.645 1.439-1.44s-.644-1.44-1.439-1.44z" />
+         </svg></a>
+       </div>
+      </div>
+     </div>
+     <div class="border-t-4 border-white/30 pt-8 text-center">
+      <p class="text-white font-bold text-lg">© 2024 Hannah School. All rights reserved. Building Bright Futures Together! 🌟</p>
+     </div>
+    </div>
+   </footer>
+  </div>
+  <script>
+    // Default configuration
+    const defaultConfig = {
+      school_name: 'HANNAH SCHOOL',
+      hero_tagline: 'Where Every Child\'s Potential Blossoms Into Excellence',
+      about_text: 'At Hannah School, we believe every child is unique and deserves an education that nurtures their individual talents. Our dedicated team of educators creates a warm, supportive environment where children thrive academically, socially, and emotionally.',
+      cta_button_text: 'Enroll Now 🚀',
+      gallery_title: 'Our Happy Students',
+      phone_primary: '+256 750 938 684',
+      phone_secondary: '+256 777 888 384',
+      address: 'Kamasuba, Off Stella-Kikajjo Road, Behind Former NKB Police Station, Kampala, Uganda',
+      background_color: '#faf5ff',
+      card_color: '#ffffff',
+      text_color: '#1f2937',
+      primary_color: '#f093fb',
+      accent_color: '#667eea'
+    };
+
+    // Initialize Element SDK
+    if (window.elementSdk) {
+      window.elementSdk.init({
+        defaultConfig,
+        onConfigChange: async (config) => {
+          // Update school names
+          const schoolName = config.school_name || defaultConfig.school_name;
+          document.getElementById('nav-school-name').textContent = schoolName;
+          document.getElementById('hero-title').textContent = schoolName;
+          document.getElementById('footer-school-name').textContent = schoolName;
+          
+          // Update hero tagline
+          document.getElementById('hero-tagline').textContent = config.hero_tagline || defaultConfig.hero_tagline;
+          
+          // Update about text
+          document.getElementById('about-text').textContent = config.about_text || defaultConfig.about_text;
+          
+          // Update CTA button
+          document.getElementById('cta-button').textContent = config.cta_button_text || defaultConfig.cta_button_text;
+          
+          // Update gallery title
+          document.getElementById('gallery-title').textContent = config.gallery_title || defaultConfig.gallery_title;
+          
+          // Update contact info
+          document.getElementById('phone-primary').textContent = config.phone_primary || defaultConfig.phone_primary;
+          document.getElementById('phone-secondary').textContent = config.phone_secondary || defaultConfig.phone_secondary;
+          
+          // Update address
+          const addressEl = document.getElementById('address');
+          const addressText = config.address || defaultConfig.address;
+          addressEl.innerHTML = addressText.replace(/,/g, '<br>');
+        },
+        mapToCapabilities: (config) => ({
+          recolorables: [
+            {
+              get: () => config.background_color || defaultConfig.background_color,
+              set: (value) => window.elementSdk.setConfig({ background_color: value })
+            },
+            {
+              get: () => config.card_color || defaultConfig.card_color,
+              set: (value) => window.elementSdk.setConfig({ card_color: value })
+            },
+            {
+              get: () => config.text_color || defaultConfig.text_color,
+              set: (value) => window.elementSdk.setConfig({ text_color: value })
+            },
+            {
+              get: () => config.primary_color || defaultConfig.primary_color,
+              set: (value) => window.elementSdk.setConfig({ primary_color: value })
+            },
+            {
+              get: () => config.accent_color || defaultConfig.accent_color,
+              set: (value) => window.elementSdk.setConfig({ accent_color: value })
+            }
+          ],
+          borderables: [],
+          fontEditable: undefined,
+          fontSizeable: undefined
+        }),
+        mapToEditPanelValues: (config) => new Map([
+          ['school_name', config.school_name || defaultConfig.school_name],
+          ['hero_tagline', config.hero_tagline || defaultConfig.hero_tagline],
+          ['about_text', config.about_text || defaultConfig.about_text],
+          ['cta_button_text', config.cta_button_text || defaultConfig.cta_button_text],
+          ['gallery_title', config.gallery_title || defaultConfig.gallery_title],
+          ['phone_primary', config.phone_primary || defaultConfig.phone_primary],
+          ['phone_secondary', config.phone_secondary || defaultConfig.phone_secondary],
+          ['address', config.address || defaultConfig.address]
+        ])
+      });
+    }
+
+    // Particle animation system
+    function createParticle() {
+      const container = document.getElementById('particles-container');
+      if (!container) return;
+      
+      const particle = document.createElement('div');
+      particle.className = 'particle';
+      
+      const size = Math.random() * 60 + 20;
+      const left = Math.random() * 100;
+      const animationDuration = Math.random() * 10 + 5;
+      const delay = Math.random() * 5;
+      
+      const colors = ['#ff6b9d', '#4facfe', '#43e97b', '#fa709a', '#fee140', '#a8edea'];
+      const color = colors[Math.floor(Math.random() * colors.length)];
+      
+      particle.style.width = `${size}px`;
+      particle.style.height = `${size}px`;
+      particle.style.left = `${left}%`;
+      particle.style.backgroundColor = color;
+      particle.style.opacity = '0.2';
+      particle.style.animation = `float ${animationDuration}s ease-in-out infinite`;
+      particle.style.animationDelay = `${delay}s`;
+      particle.style.top = `${Math.random() * 100}%`;
+      
+      container.appendChild(particle);
+      
+      setTimeout(() => {
+        if (particle.parentNode) {
+          particle.parentNode.removeChild(particle);
+        }
+      }, (animationDuration + delay) * 1000);
+    }
+    
+    // Create particles periodically
+    setInterval(createParticle, 1000);
+    for (let i = 0; i < 15; i++) {
+      setTimeout(createParticle, i * 200);
+    }
+
+    // Mobile menu toggle
+    const mobileMenuBtn = document.getElementById('mobile-menu-btn');
+    const mobileMenu = document.getElementById('mobile-menu');
+    
+    mobileMenuBtn.addEventListener('click', () => {
+      mobileMenu.classList.toggle('hidden');
+    });
+
+    // Close mobile menu when clicking a link
+    mobileMenu.querySelectorAll('a').forEach(link => {
+      link.addEventListener('click', () => {
+        mobileMenu.classList.add('hidden');
+      });
+    });
+
+    // Smooth scroll
+    document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+      anchor.addEventListener('click', function(e) {
+        e.preventDefault();
+        const target = document.querySelector(this.getAttribute('href'));
+        if (target) {
+          const navHeight = document.getElementById('navbar').offsetHeight;
+          const targetPosition = target.offsetTop - navHeight;
+          window.scrollTo({
+            top: targetPosition,
+            behavior: 'smooth'
+          });
+        }
+      });
+    });
+
+    // Contact form
+    const contactForm = document.getElementById('contact-form');
+    const formSuccess = document.getElementById('form-success');
+    
+    contactForm.addEventListener('submit', (e) => {
+      e.preventDefault();
+      formSuccess.classList.remove('hidden');
+      contactForm.reset();
+      setTimeout(() => formSuccess.classList.add('hidden'), 5000);
+    });
+
+    // Navbar scroll effect
+    window.addEventListener('scroll', () => {
+      const navbar = document.getElementById('navbar');
+      if (window.scrollY > 50) {
+        navbar.style.boxShadow = '0 20px 50px rgba(0,0,0,0.3)';
+      } else {
+        navbar.style.boxShadow = '0 10px 30px rgba(0,0,0,0.1)';
+      }
+    });
+
+    // Intersection Observer for scroll animations
+    const observerOptions = {
+      threshold: 0.1,
+      rootMargin: '0px 0px -100px 0px'
+    };
+
+    const observer = new IntersectionObserver((entries) => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          entry.target.style.opacity = '1';
+          entry.target.style.transform = 'translateY(0)';
+        }
+      });
+    }, observerOptions);
+
+    // Observe program and activity cards
+    document.querySelectorAll('.program-card, .activity-card, .feature-box').forEach(el => {
+      el.style.opacity = '0';
+      el.style.transform = 'translateY(30px)';
+      el.style.transition = 'all 0.6s ease-out';
+      observer.observe(el);
+    });
+
+    // Counter animation for stats
+    function animateCounter(element, target, duration) {
+      let current = 0;
+      const increment = target / (duration / 16);
+      const timer = setInterval(() => {
+        current += increment;
+        if (current >= target) {
+          element.textContent = target + '+';
+          clearInterval(timer);
+        } else {
+          element.textContent = Math.floor(current) + '+';
+        }
+      }, 16);
+    }
+
+    const statsObserver = new IntersectionObserver((entries) => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          const numbers = entry.target.querySelectorAll('.stat-number');
+          numbers.forEach(num => {
+            const target = parseInt(num.textContent);
+            animateCounter(num, target, 2000);
+          });
+          statsObserver.unobserve(entry.target);
+        }
+      });
+    }, { threshold: 0.5 });
+
+    const statsSection = document.querySelector('.stat-card')?.closest('section');
+    if (statsSection) {
+      statsObserver.observe(statsSection);
+    }
+
+    // Cursor trail effect (desktop only)
+    if (window.innerWidth > 768) {
+      let lastX = 0, lastY = 0;
+      let trailTimeout;
+      
+      document.addEventListener('mousemove', (e) => {
+        clearTimeout(trailTimeout);
+        
+        if (Math.abs(e.clientX - lastX) > 50 || Math.abs(e.clientY - lastY) > 50) {
+          const trail = document.createElement('div');
+          trail.style.position = 'fixed';
+          trail.style.width = '10px';
+          trail.style.height = '10px';
+          trail.style.borderRadius = '50%';
+          trail.style.background = 'linear-gradient(135deg, #f093fb, #f5576c)';
+          trail.style.left = e.clientX + 'px';
+          trail.style.top = e.clientY + 'px';
+          trail.style.pointerEvents = 'none';
+          trail.style.zIndex = '9999';
+          trail.style.opacity = '0.6';
+          trail.style.transition = 'all 0.5s ease-out';
+          
+          document.body.appendChild(trail);
+          
+          setTimeout(() => {
+            trail.style.transform = 'scale(3)';
+            trail.style.opacity = '0';
+          }, 10);
+          
+          setTimeout(() => {
+            if (trail.parentNode) {
+              trail.parentNode.removeChild(trail);
+            }
+          }, 500);
+          
+          lastX = e.clientX;
+          lastY = e.clientY;
+        }
+      });
+    }
+  </script>
+ <script>(function(){function c(){var b=a.contentDocument||a.contentWindow.document;if(b){var d=b.createElement('script');d.innerHTML="window.__CF$cv$params={r:'9c2035ca414333e5',t:'MTc2OTA5NzA1OS4wMDAwMDA='};var a=document.createElement('script');a.nonce='';a.src='/cdn-cgi/challenge-platform/scripts/jsd/main.js';document.getElementsByTagName('head')[0].appendChild(a);";b.getElementsByTagName('head')[0].appendChild(d)}}if(document.body){var a=document.createElement('iframe');a.height=1;a.width=1;a.style.position='absolute';a.style.top=0;a.style.left=0;a.style.border='none';a.style.visibility='hidden';document.body.appendChild(a);if('loading'!==document.readyState)c();else if(window.addEventListener)document.addEventListener('DOMContentLoaded',c);else{var e=document.onreadystatechange||function(){};document.onreadystatechange=function(b){e(b);'loading'!==document.readyState&&(document.onreadystatechange=e,c())}}}})();</script></body>
+</html>
